@@ -1,0 +1,93 @@
+
+  <body ng-app="MyApp">
+    <form name="form" #userForm="ngForm" (ngSubmit)="Add()">
+            <div class="form-group col-sm-3 offset-sm-1">
+              <p>Angular2 Operation</p>
+         <h3>ADD EMPLOYEE</h3>
+            <table  height="300" style="margin-top:50px;">
+            <tr>
+            <td>ID</td>
+            <td>
+            <div class="from-group row">
+                  <!-- <span class="input-group-addon">Text</span> -->
+                  <input type="number" name="id" class="form-control" [(ngModel)]="id">
+            </div></td>
+            </tr>
+            <tr>
+            <td>Name</td><td>
+            <div class="from-group row">
+                  <!-- <span class="input-group-addon">Text</span> -->
+                 <input type="text" name="name" class="form-control" [(ngModel)]="name">
+            </div> </td>
+            </tr>
+            <tr>
+            <td>Salary</td><td>
+            <div class="from-group row">
+                  <!-- <span class="input-group-addon">Text</span> -->
+                  <input type="number" class="form-control" name="salary"  [(ngModel)]="salary">
+            </div> </td>
+            </tr>
+            <tr>
+            <td>Department</td><td>
+            <div class="from-group row">
+                  <!-- <span class="input-group-addon">Text</span> -->
+                  <input type="text" class="form-control" name="department" [(ngModel)]="department">
+                </div></td></tr>
+            </table>
+        </div>
+                
+            <div class="form-group col-sm-1 offset-sm-1">
+          
+            <!-- <button class="btn btn-primary" ng-click="onSubmit()">Add Employee</button> -->
+            <input type="submit" value="Add Employee" class="btn btn-success"/>
+            <!--<a routerLink='app-newcomp'><button class="btn btn-success pull-right" ng-click="Add()">Add Employee</button></a>-->
+          </div>
+        </form><br/><br/>
+      
+       
+        <div class="form-group col-sm-3 offset-sm-1">
+          <h3>Show All EMPLOYEE</h3>
+          <br>
+          <table border="1px solid black" ng-controller="MyController"><tr>
+            <th>Id</th><th>Name</th><th>Salary</th><th>Department</th><th>Action</th>
+          </tr>
+        <tr *ngFor="let e of Emp">
+           <td>{{e.id}}</td>
+          <td>{{e.name}}</td>
+          <td>{{e.salary}}</td>
+          <td>{{e.department}}</td>
+          <td><button class="btn-btn-primary" (click)="update(e.id,e.name,e.salary,e.department)">UPDATE</button>
+          </td>
+          <td>
+            <button class="btn-btn-primary" (click)="delete(e.id)">DELETE</button>
+          </td>
+        </tr>
+      </table>
+        </div>
+      
+      
+      <form (ngSubmit)="editrow(newid,newname,newsalary,newdepartment)">
+        <div class="form-group col-sm-3 offset-sm-1">
+          <h3>Update EMPLOYEE</h3>
+          <table  height="300" style="margin-top:50px;"> 
+       
+      <tr><td>Id</td>
+            <td><input type="number" name="id" [(ngModel)]="newid"></td>
+            </tr>
+        <tr><td>Name</td>
+                <td><input type="text" name="name" [(ngModel)]="newname"></td>
+            </tr>
+        <tr><td>Salary</td>
+              <td><input type="text" name="salary" [(ngModel)]="newsalary"></td>
+          </tr>
+        <tr><td>Department</td>
+            <td><input type="text" name="department" [(ngModel)]="newdepartment"></td>
+        </tr>
+      <tr>
+            <td><input type="submit" class="btn btn-success" value="Update Employee"></td>
+            </tr>
+          </table>
+        </div>
+      </form>
+      </body>
+      
